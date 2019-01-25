@@ -48,3 +48,6 @@ git clone https://github.com/FortAwesome/Font-Awesome.git
 cp -v Font-Awesome/webfonts/*.ttf ~/.fonts
 rm -rf Font-Awesome
 
+###### Copy config files
+cp -v i3-config/* ~/.config/i3/
+
