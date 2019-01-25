@@ -11,6 +11,7 @@ cd /tmp
 ###### Get i3-gaps
 git clone https://www.github.com/Airblader/i3 i3-gaps
 cd i3-gaps
+git checkout gaps && git pull 
 
 ###### Compile & Install
 autoreconf --force --install
@@ -49,5 +50,7 @@ cp -v Font-Awesome/webfonts/*.ttf ~/.fonts
 rm -rf Font-Awesome
 
 ###### Copy config files
-cp -v i3-config/* ~/.config/i3/
+sudo chmod +x ~/install-i3-gaps-ubuntu/i3-config/i3exit
+cp -fv ~/install-i3-gaps-ubuntu/i3-config/* ~/.config/i3/
+cp -fv ~/install-i3-gaps-ubuntu/gtk-config/* ~/
 
