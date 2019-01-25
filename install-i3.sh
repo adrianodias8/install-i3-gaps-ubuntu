@@ -51,6 +51,7 @@ rm -rf Font-Awesome
 
 ###### Copy config files
 sudo chmod +x ~/install-i3-gaps-ubuntu/i3-config/i3exit
+mkdir ~/.config/i3/
 cp -fv ~/install-i3-gaps-ubuntu/i3-config/* ~/.config/i3/
 cp -fv ~/install-i3-gaps-ubuntu/gtk-config/* ~/
 
