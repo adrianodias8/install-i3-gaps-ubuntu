@@ -173,12 +173,12 @@ bindsym $mod+r mode "resize"
 set $mode_power power
 bindsym Mod1+Control+l mode "$mode_power"
 mode "$mode_power" {
-    bindsym l mode "default", exec --no-startup-id $HOME/.i3/i3exit lock
-    bindsym e mode "default", exec --no-startup-id $HOME/.i3/i3exit logout
-    bindsym s mode "default", exec --no-startup-id $HOME/.i3/i3exit suspend
-    bindsym h mode "default", exec --no-startup-id $HOME/.i3/i3exit hibernate
-    bindsym r mode "default", exec --no-startup-id $HOME/.i3/i3exit reboot
-    bindsym p mode "default", exec --no-startup-id $HOME/.i3/i3exit shutdown
+    bindsym l mode "default", exec --no-startup-id $HOME/.config/i3/i3exit lock
+    bindsym e mode "default", exec --no-startup-id $HOME/.config/i3/i3exit logout
+    bindsym s mode "default", exec --no-startup-id $HOME/.config/i3/i3exit suspend
+    bindsym h mode "default", exec --no-startup-id $HOME/.config/i3/i3exit hibernate
+    bindsym r mode "default", exec --no-startup-id $HOME/.config/i3/i3exit reboot
+    bindsym p mode "default", exec --no-startup-id $HOME/.config/i3/i3exit shutdown
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -268,8 +268,8 @@ client.urgent $urgent-bg-color $urgent-bg-color $text-color #2f343a
 # finds out, if available)
 bar {
         # tray_output primary
-        status_command i3status # Default option
-        # status_command i3blocks -c ~/.i3/i3blocks.conf # Optional
+        # status_command i3status # Default option
+        status_command i3blocks -c ~/.i3/i3blocks.conf
         colors {
                 background $bg-color
                 separator #757575
@@ -287,5 +287,15 @@ exec_always --no-startup-id feh --bg-scale ~/.wallpaper.png
 exec_always --no-startup-id feh --bg-scale ~/wallpaper.jpg
 exec_always --no-startup-id feh --bg-scale ~/wallpaper.png
 
+
+
+
+# audio
+bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+
+
+
+# Start clipit
+exec --no-startup-id clipit
 
 

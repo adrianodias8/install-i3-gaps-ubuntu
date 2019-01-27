@@ -6,6 +6,17 @@ cp wallpaper.jpg ~/.wallpaper.jpg
 ###### Install Dependencies (i3-gaps + polybar)
 sudo apt install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev automake libxcb-shape0-dev cmake cmake-data libcairo2-dev libxcb-ewmh-dev libxcb-image0-dev pkg-config python-xcbgen libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev cmake
 
+
+cd /tmp
+
+######Install polybar
+git clone https://github.com/jaagr/polybar.git
+
+cd polybar && ./build.sh
+
+######more stuff
+sudo apt install -y i3status i3lock i3blocks suckless-tools feh rofi clipit compton arc-theme arandr
+
 cd /tmp
 
 ###### Get i3-gaps
@@ -23,16 +34,6 @@ mkdir -p build && cd build/
 ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
 make
 sudo make install
-
-cd /tmp
-
-######Install polybar
-git clone https://github.com/jaagr/polybar.git
-
-cd polybar && ./build.sh
-
-######more stuff
-sudo apt install -y i3status i3lock i3blocks suckless-tools nitrogen rofi clipit thunar compton arc-theme arandr
 
 ###### Make .fonts directory if not already available
 mkdir ~/.fonts
@@ -54,4 +55,5 @@ sudo chmod +x ~/install-i3-gaps-ubuntu/i3-config/i3exit
 mkdir ~/.config/i3/
 cp -fv ~/install-i3-gaps-ubuntu/i3-config/* ~/.config/i3/
 cp -fv ~/install-i3-gaps-ubuntu/gtk-config/* ~/
+cp -fv ~/install-i3-gaps-ubuntu/conky/.conkyrc ~/.config/.conkyrc
 
