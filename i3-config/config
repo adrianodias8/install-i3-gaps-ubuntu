@@ -47,7 +47,7 @@ bindsym $mod+Shift+q kill
 ##########
 exec compton
 # rofi (dmenu alternative)
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 700 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+bindsym $mod+d exec rofi -show run -font "System San Francisco Display 12"
 
 # change focus
 bindsym $mod+j focus left
@@ -72,6 +72,11 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+
+#workspace back and forth
+workspace_auto_back_and_forth yes
+bindsym $mod+b workspace back_and_forth
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -109,8 +114,8 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+# set $ws9 "9"
+# set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -121,8 +126,8 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+# bindsym $mod+9 workspace $ws9
+# bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -133,8 +138,8 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+# bindsym $mod+Shift+9 move container to workspace $ws9
+# bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -170,16 +175,19 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $mode_power power
-bindsym Mod1+Control+l mode "$mode_power"
-mode "$mode_power" {
-    bindsym l mode "default", exec --no-startup-id $HOME/.config/i3/i3exit lock
-    bindsym e mode "default", exec --no-startup-id $HOME/.config/i3/i3exit logout
-    bindsym s mode "default", exec --no-startup-id $HOME/.config/i3/i3exit suspend
-    bindsym h mode "default", exec --no-startup-id $HOME/.config/i3/i3exit hibernate
-    bindsym r mode "default", exec --no-startup-id $HOME/.config/i3/i3exit reboot
-    bindsym p mode "default", exec --no-startup-id $HOME/.config/i3/i3exit shutdown
 
+#Set shut down, restart and locking features
+bindsym $mod+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown mode "$mode_system" {
+    bindsym l exec --no-startup-id $HOME/.config/i3/i3exit lock, mode "default" 
+    bindsym s exec --no-startup-id $HOME/.config/i3/i3exit suspend, mode "default" 
+    bindsym u exec --no-startup-id $HOME/.config/i3/i3exit switch_user, mode "default" 
+    bindsym e exec --no-startup-id $HOME/.config/i3/i3exit logout, mode "default" 
+    bindsym h exec --no-startup-id $HOME/.config/i3/i3exit hibernate, mode "default" 
+    bindsym r exec --no-startup-id $HOME/.config/i3/i3exit reboot, mode "default" 
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -191,8 +199,8 @@ mode "$mode_power" {
 for_window [class="^.*"] border pixel 0
 
 # Set inner/outer gaps
-gaps inner 10
-gaps outer 2
+gaps inner 14
+gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
