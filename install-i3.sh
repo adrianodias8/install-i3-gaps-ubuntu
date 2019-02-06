@@ -32,14 +32,14 @@ mkdir -p build && cd build/
 # The prefix and sysconfdir are, obviously, dependent on the distribution.
 ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
 make
-sudo make install
+yes | sudo make install
 
 ###### Get dunst
 cd /tmp
 git clone https://github.com/dunst-project/dunst.git
 cd dunst
 make
-sudo make install
+yes | sudo make install
 
 ###### Make .fonts directory if not already available
 mkdir ~/.fonts
