@@ -17,9 +17,8 @@ cd polybar && ./build.sh
 ######more stuff
 sudo apt install -y i3status i3lock i3blocks suckless-tools feh rofi clipit compton arc-theme arandr
 
-cd /tmp
-
 ###### Get i3-gaps
+cd /tmp
 git clone https://www.github.com/Airblader/i3 i3-gaps
 cd i3-gaps
 git checkout gaps && git pull 
@@ -32,6 +31,13 @@ mkdir -p build && cd build/
 # Disabling sanitizers is important for release versions!
 # The prefix and sysconfdir are, obviously, dependent on the distribution.
 ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+make
+sudo make install
+
+###### Get dunst
+cd /tmp
+git clone https://github.com/dunst-project/dunst.git
+cd dunst
 make
 sudo make install
 
