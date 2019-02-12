@@ -6,7 +6,7 @@ conky.config = {
     own_window = true,
     own_window_transparent = true,
     own_window_argb_visual = true,
-    own_window_type = 'normal',
+    own_window_type = 'override',
     own_window_class = 'conky-semi',
     own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
     background = false,
@@ -19,7 +19,7 @@ conky.config = {
 
     -- placement
     alignment = 'top_left',
-    gap_x = 140,
+    gap_x = 25,
     gap_y = 25,
 
     -- default drawing
@@ -33,9 +33,9 @@ conky.config = {
 
     -- colors
     font = 'Liberation Mono:size=10',
-    default_color = 'EEEEEE',
-    color1 = 'AABBFF',
-    color2 = 'FF993D',
+    default_color = 'AAAAAA',
+    color1 = '878A96',
+    color2 = '5C5F6D',
     color3 = 'AAAAAA',
 
     -- layouting
@@ -86,11 +86,11 @@ ${template1 Signal}             ${template2}${wireless_link_qual_perc wlan0} ${t
 ${template1 Download}           ${template2}${downspeed wlan0}              ${template3}${downspeedgraph wlan0}
 ${template1 Upload}             ${template2}${upspeed wlan0}                ${template3}${upspeedgraph wlan0}
 ${template1 Total Down/Up}                                                  ${template3}${totaldown wlan0}↓ / {totalup wlan0}↑
-${else}${if_existing /proc/net/route eth0}\
-${template1 Ip}                                                             ${template3}${addr eth0}
-${template1 Download}           ${template2}${downspeed eth0}               ${template3}${downspeedgraph eth0}
-${template1 Upload}             ${template2}${upspeed eth0}                 ${template3}${upspeedgraph eth0}
-${template1 Total Down/Up}                                                  ${template3}${totaldown eth0}↓ / ${totalup eth0}↑
+${else}${if_existing /proc/net/route enp0s3}\
+${template1 Ip}                                                             ${template3}${addr enp0s3}
+${template1 Download}           ${template2}${downspeed eth0}               ${template3}${downspeedgraph enp0s3}
+${template1 Upload}             ${template2}${upspeed eth0}                 ${template3}${upspeedgraph enp0s3}
+${template1 Total Down/Up}                                                  ${template3}${totaldown enp0s3}↓ / ${totalup enp0s3}↑
 ${endif}${endif}\
 
 
