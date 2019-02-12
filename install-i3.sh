@@ -7,15 +7,8 @@ cp wallpaper.jpg ~/.wallpaper.jpg
 sudo apt install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev automake libxcb-shape0-dev cmake cmake-data libcairo2-dev libxcb-ewmh-dev libxcb-image0-dev pkg-config python-xcbgen libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev cmake xcb-proto
 
 
-cd /tmp
-
-######Install polybar
-git clone https://github.com/jaagr/polybar.git
-
-cd polybar && ./build.sh
-
 ######more stuff
-sudo apt install -y i3status i3lock i3blocks suckless-tools feh rofi clipit compton arc-theme arandr
+sudo apt install -y i3status i3lock i3blocks suckless-tools feh rofi clipit compton arc-theme arandr conky-all
 
 ###### Get i3-gaps
 cd /tmp
@@ -32,14 +25,21 @@ mkdir -p build && cd build/
 # The prefix and sysconfdir are, obviously, dependent on the distribution.
 ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
 make
-yes | sudo make install
+sudo make install 
 
 ###### Get dunst
 cd /tmp
 git clone https://github.com/dunst-project/dunst.git
 cd dunst
 make
-yes | sudo make install
+sudo make install
+
+cd /tmp
+
+######Install polybar
+git clone https://github.com/jaagr/polybar.git
+
+cd polybar && yes | ./build.sh
 
 ###### Make .fonts directory if not already available
 mkdir ~/.fonts
@@ -57,9 +57,18 @@ cp -v Font-Awesome/webfonts/*.ttf ~/.fonts
 rm -rf Font-Awesome
 
 ###### Copy config files
+#i3
 sudo chmod +x ~/install-i3-gaps-ubuntu/i3-config/i3exit
 mkdir ~/.config/i3/
 cp -fv ~/install-i3-gaps-ubuntu/i3-config/* ~/.config/i3/
-cp -fv ~/install-i3-gaps-ubuntu/gtk-config/* ~/
-cp -fv ~/install-i3-gaps-ubuntu/conky/.conkyrc ~/.config/.conkyrc
+#polybar
+sudo chmod +x ~/install-i3-gaps-ubuntu/polybar-config/launch.sh
+mkdir ~/.config/polybar/
+cp -fv ~/install-i3-gaps-ubuntu/polybar-config/* ~/.config/polybar/
+#rofi
+mkdir ~/.config/rofi/
+cp -fv ~/install-i3-gaps-ubuntu/rofi/* ~/.config/rofi/
+#conky
+mkdir ~/.config/conky/
+cp -fv ~/install-i3-gaps-ubuntu/conky/.conkyrc ~/.config/conky
 

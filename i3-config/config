@@ -46,8 +46,9 @@ bindsym $mod+Shift+q kill
 #Rofi
 ##########
 exec compton
+
 # rofi (dmenu alternative)
-bindsym $mod+d exec rofi -show run -font "System San Francisco Display 12"
+bindsym $mod+d exec rofi -show run -theme Arc-Dark
 
 # change focus
 bindsym $mod+j focus left
@@ -274,20 +275,20 @@ client.urgent $urgent-bg-color $urgent-bg-color $text-color #2f343a
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-	font pango:monospace 8, FontAwesome 8
-        # tray_output primary
-        # status_command i3status # Default option
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        colors {
-                background $bg-color
-                separator #757575
-                #                   border              background          text
-                focused_workspace   $bg-color           $bg-color           $text-color
-                inactive_workspace  $inactive-bg-color  $inactive-bg-color  $inactive-text-color
-                urgent_workspace    $urgent-bg-color    $urgent-bg-color    $text-color
-        }
-}
+#bar {
+#	font pango:monospace 8, FontAwesome 8
+#        # tray_output primary
+#        # status_command i3status # Default option
+#        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#        colors {
+#                background $bg-color
+#                separator #757575
+#                #                   border              background          text
+#                focused_workspace   $bg-color           $bg-color           $text-color
+#                inactive_workspace  $inactive-bg-color  $inactive-bg-color  $inactive-text-color
+#                urgent_workspace    $urgent-bg-color    $urgent-bg-color    $text-color
+#        }
+#}
 
 
 # Set wallpaper
@@ -302,9 +303,13 @@ exec_always --no-startup-id feh --bg-scale ~/wallpaper.png
 # audio
 bindsym $mod+Ctrl+m exec i3-sensible-terminal -e 'alsamixer'
 
-
+# Start conky
+exec --no-startup-id conky -c ~/.config/conky/.conkyrc
 
 # Start clipit
 exec --no-startup-id clipit
+
+# Start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
