@@ -4,28 +4,30 @@
 cp wallpaper.jpg ~/.wallpaper.jpg
 
 ###### Install Dependencies (i3-gaps + polybar)
-sudo apt install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev automake libxcb-shape0-dev cmake cmake-data libcairo2-dev libxcb-ewmh-dev libxcb-image0-dev pkg-config python-xcbgen libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev cmake xcb-proto
+#sudo apt install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev automake libxcb-shape0-dev cmake cmake-data libcairo2-dev libxcb-ewmh-dev libxcb-image0-dev pkg-config python-xcbgen libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev cmake xcb-proto
 
+###### Install Dependencies + i3-wm
+sudo apt install -y cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev xcb libxcb-ewmh2
 
 ######more stuff
-sudo apt install -y i3status i3lock i3blocks suckless-tools feh rofi clipit compton arc-theme arandr conky-all
+sudo apt install -y suckless-tools feh rofi clipit compton arc-theme arandr conky-all
 
 ###### Get i3-gaps
-cd /tmp
-git clone https://www.github.com/Airblader/i3 i3-gaps
-cd i3-gaps
-git checkout gaps && git pull 
+#cd /tmp
+#git clone https://www.github.com/Airblader/i3 i3-gaps
+#cd i3-gaps
+#git checkout gaps && git pull 
 
 ###### Compile & Install
-autoreconf --force --install
-rm -rf build/
-mkdir -p build && cd build/
+#autoreconf --force --install
+#rm -rf build/
+#mkdir -p build && cd build/
 
 # Disabling sanitizers is important for release versions!
 # The prefix and sysconfdir are, obviously, dependent on the distribution.
-../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-make
-sudo make install 
+#../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+#make
+#sudo make install 
 
 ###### Get dunst
 cd /tmp
