@@ -41,7 +41,7 @@ cd /tmp
 ######Install polybar
 git clone https://github.com/jaagr/polybar.git
 
-cd polybar && yes | ./build.sh
+cd polybar && yes | ./build.sh --i3
 
 ###### Make .fonts directory if not already available
 mkdir ~/.fonts
